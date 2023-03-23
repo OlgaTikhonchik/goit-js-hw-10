@@ -30,8 +30,8 @@ function renderList(country) {
   } else if (country.length >= 2 && country.length <= 10) {
     const createdMarkups = country
       .map(({ flags, name }) => {
-        return `<img src = "${flags.svg}" alt = "${name.official}" width ="60", height = "40">
-        <h1><b>${name.official}</b></h1>`;
+        return `<li><img src = "${flags.svg}" alt = "${name.official}" width ="60", height = "40">
+        <h1><b>${name.official}</b></h1></li>`;
       })
       .join('');
 
@@ -48,7 +48,7 @@ function renderList(country) {
         <p><b>Languages</b>: ${Object.values(languages)}</p>`;
       }
     );
-    countryList.innerHTML = createdMarkupInfo;
+    countryContainer.innerHTML = createdMarkupInfo;
   }
 }
 
