@@ -14,10 +14,12 @@ inputEl.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
 function onSearchCountry(event) {
   event.preventDefault();
   let textInput = event.target.value.trim();
+
   resetMarkup();
   if (textInput === '') {
     return;
   }
+
   fetchCountries(textInput).then(renderList).catch(onFetchError);
 }
 
@@ -54,6 +56,9 @@ function renderList(country) {
 
 function onFetchError(error) {
   Notiflix.Notify.failure('Oops, there is no country with that name');
+  if (error.message === '404') {
+    console.warn(error);
+  }
 }
 
 function resetMarkup() {
