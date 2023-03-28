@@ -55,6 +55,8 @@ function renderList(country) {
 }
 
 function onFetchError(error) {
+  setTimeout(() => (inputEl.value = ''), 1200);
+
   Notiflix.Notify.failure('Oops, there is no country with that name');
   if (error.message === '404') {
     console.warn(error);
